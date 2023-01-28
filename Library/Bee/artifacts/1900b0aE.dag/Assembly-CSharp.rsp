@@ -358,6 +358,7 @@
 "Assets/Scripts/DestroyOverTime.cs"
 "Assets/Scripts/EnemyController.cs"
 "Assets/Scripts/PlayerController.cs"
+"Assets/Scripts/ReloadScene.cs"
 -langversion:9.0
 
 /deterministic
