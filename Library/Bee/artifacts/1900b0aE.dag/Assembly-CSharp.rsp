@@ -356,7 +356,9 @@
 "Assets/Scripts/AmmoPickup.cs"
 "Assets/Scripts/BillBoard.cs"
 "Assets/Scripts/DestroyOverTime.cs"
+"Assets/Scripts/EnemyBullet.cs"
 "Assets/Scripts/EnemyController.cs"
+"Assets/Scripts/HealthPickup.cs"
 "Assets/Scripts/PlayerController.cs"
 "Assets/Scripts/ReloadScene.cs"
 -langversion:9.0
