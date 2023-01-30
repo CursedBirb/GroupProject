@@ -358,6 +358,7 @@
 "Assets/Scripts/DestroyOverTime.cs"
 "Assets/Scripts/EnemyBullet.cs"
 "Assets/Scripts/EnemyController.cs"
+"Assets/Scripts/EnemyMeleeController.cs"
 "Assets/Scripts/HealthPickup.cs"
 "Assets/Scripts/PlayerController.cs"
 "Assets/Scripts/ReloadScene.cs"
