@@ -360,6 +360,7 @@
 "Assets/Scripts/EnemyController.cs"
 "Assets/Scripts/EnemyMeleeController.cs"
 "Assets/Scripts/HealthPickup.cs"
+"Assets/Scripts/LoadSecondScene.cs"
 "Assets/Scripts/PlayerController.cs"
 "Assets/Scripts/ReloadScene.cs"
 -langversion:9.0

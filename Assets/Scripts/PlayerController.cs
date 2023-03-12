@@ -27,9 +27,16 @@ public class PlayerController : MonoBehaviour
     public GameObject deadScreen;
     public bool hasDied;
 
+    private bool gunFirst;
+    private bool gunSecond;
+    public int gunType;
+
     public void Awake() {
 
         instance = this;
+        gunFirst = true;
+        gunSecond = false;
+        gunType = 1;
 
     }
     
@@ -60,33 +67,25 @@ public class PlayerController : MonoBehaviour
             transform.rotation = Quaternion.Euler(transform.rotation.eulerAngles.x, transform.rotation.eulerAngles.y, transform.rotation.eulerAngles.z - mouseInput.x);
 
             //strzelanie
-
-            if(Input.GetMouseButtonDown(0)) {
-
-                if(currentAmmo > 0) {
-
-                
-                    Ray ray = viewCam.ViewportPointToRay(new Vector3(.5f, .5f, 0f));
-                    RaycastHit hit;
-                    if(Physics.Raycast(ray, out hit))
-                    {
-                        //Debug.Log("Patrzę na " + hit.transform.name);
-                        Instantiate(bulletImpact, hit.point, transform.rotation);
-
-                        if(hit.transform.tag == "Enemy") {
-
-                            hit.transform.parent.GetComponent<EnemyController>().TakeDamage();
-
-                        }
-
-                    } else {
-                        Debug.Log("Patrzę na nic!");
-                    }
-                }
-                currentAmmo--;
-                gunAnimation.SetTrigger("Shoot");
+            
+            if (Input.GetKeyDown(KeyCode.Alpha1)) {
+            
+                gunFirst = true;
+                gunSecond = false;
 
             }
+
+            if (Input.GetKeyDown(KeyCode.Alpha2)) {
+            
+                gunFirst = false;
+                gunSecond = true;
+
+            }
+
+            GunShooting();
+
+           
+
         }
 
     }
@@ -115,4 +114,80 @@ public class PlayerController : MonoBehaviour
         }
 
     }
+
+    public void GunShooting() {
+
+        if (gunFirst == true) {
+
+            gunSecond = false;
+
+            if(Input.GetMouseButtonDown(0)) {
+
+                if(currentAmmo > 0) {
+
+                    
+                    Ray ray = viewCam.ViewportPointToRay(new Vector3(.5f, .5f, 0f));
+                    RaycastHit hit;
+
+                    if(Physics.Raycast(ray, out hit))
+
+                        {
+                        //Debug.Log("Patrzę na " + hit.transform.name);
+                        Instantiate(bulletImpact, hit.point, transform.rotation);
+
+                        if(hit.transform.tag == "Enemy") {
+
+                                hit.transform.parent.GetComponent<EnemyController>().TakeDamage();
+
+                            }
+
+                        } else {
+                            Debug.Log("Patrzę na nic!");
+                        }
+                    }
+                currentAmmo--;
+                gunAnimation.SetTrigger("Shoot");
+
+                }
+
+        } else if(gunSecond == true) {
+
+            gunFirst = false;
+            
+
+            if(Input.GetMouseButtonDown(0)) {
+
+                if(currentAmmo > 0) {
+
+                    
+                    Ray ray = viewCam.ViewportPointToRay(new Vector3(.5f, .5f, 0f));
+                    RaycastHit hit;
+
+                    if(Physics.Raycast(ray, out hit))
+
+                        {
+                        //Debug.Log("Patrzę na " + hit.transform.name);
+                        Instantiate(bulletImpact, hit.point, transform.rotation);
+
+                        if(hit.transform.tag == "Enemy") {
+
+                                hit.transform.parent.GetComponent<EnemyController>().TakeDamage();
+                                hit.transform.parent.GetComponent<EnemyController>().TakeDamage();
+                                hit.transform.parent.GetComponent<EnemyController>().TakeDamage();
+
+                            }
+
+                        } else {
+                            Debug.Log("Patrzę na nic!");
+                        }
+                    }
+                currentAmmo--;
+                gunAnimation.SetTrigger("Shoot");
+
+            }
+        }
+
+
+    }
+
 }
