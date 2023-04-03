@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class EnemyMeleeController : MonoBehaviour
 {
-   public int health = 5;
+   public int health = 12;
     public GameObject explosion;
 
     public float playerRange = 10f;
@@ -38,9 +38,9 @@ public class EnemyMeleeController : MonoBehaviour
         
     }
 
-    public void TakeDamage() {
+    public void TakeDamage(int damageTaken) {
 
-        health--;
+        health = health - damageTaken;
         if(health <= 0) {
             
             Destroy(gameObject);

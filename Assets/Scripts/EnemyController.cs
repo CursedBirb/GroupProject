@@ -5,7 +5,7 @@ using UnityEngine;
 public class EnemyController : MonoBehaviour
 {
 
-    public int health = 3;
+    public int health = 10;
     public GameObject explosion;
 
     public float playerRange = 10f;
@@ -55,9 +55,9 @@ public class EnemyController : MonoBehaviour
         
     }
 
-    public void TakeDamage() {
+    public void TakeDamage(int damageTaken) {
 
-        health--;
+        health = health - damageTaken;
         if(health <= 0) {
             
             Destroy(gameObject);

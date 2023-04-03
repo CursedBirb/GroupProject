@@ -207,7 +207,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 51ad17ab55c05254d8e9109c1a793467, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 3
+  health: 5
   explosion: {fileID: 213406792459685259, guid: 918eaaddc09f95e449ce15a0e1cc08ec, type: 3}
   playerRange: 12
   theRB: {fileID: 5452434029263332918}

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
@@ -27,8 +28,11 @@ public class PlayerController : MonoBehaviour
     public GameObject deadScreen;
     public bool hasDied;
 
+    public Text healthText, ammoText;
+
     private bool gunFirst;
     private bool gunSecond;
+    private bool gunThird;
     public int gunType;
 
     public void Awake() {
@@ -36,6 +40,7 @@ public class PlayerController : MonoBehaviour
         instance = this;
         gunFirst = true;
         gunSecond = false;
+        gunThird = false;
         gunType = 1;
 
     }
@@ -45,7 +50,9 @@ public class PlayerController : MonoBehaviour
     {
         
         currentHealth = maxHealth;
+        healthText.text = currentHealth.ToString() + "%";
 
+        ammoText.text = currentAmmo.ToString();
     }
 
     // Update is called once per frame
@@ -67,11 +74,12 @@ public class PlayerController : MonoBehaviour
             transform.rotation = Quaternion.Euler(transform.rotation.eulerAngles.x, transform.rotation.eulerAngles.y, transform.rotation.eulerAngles.z - mouseInput.x);
 
             //strzelanie
-            
+
             if (Input.GetKeyDown(KeyCode.Alpha1)) {
             
                 gunFirst = true;
                 gunSecond = false;
+                gunThird = false;
 
             }
 
@@ -79,18 +87,24 @@ public class PlayerController : MonoBehaviour
             
                 gunFirst = false;
                 gunSecond = true;
+                gunThird = false;
+
+            }
+
+            if (Input.GetKeyDown(KeyCode.Alpha3)) {
+            
+                gunFirst = false;
+                gunSecond = false;
+                gunThird = true;
 
             }
 
             GunShooting();
-
-           
-
         }
 
     }
 
-    public void TakeDamage(int damageAmount) {
+public void TakeDamage(int damageAmount) {
 
         currentHealth -= damageAmount;
 
@@ -98,28 +112,41 @@ public class PlayerController : MonoBehaviour
 
             deadScreen.SetActive(true);
             hasDied = true;
-
+            currentHealth = 0;
         }
-
+            healthText.text = currentHealth.ToString() + "%";
     }
 
-    public void AddHealth(int healAmount) {
+    public void AddHealth(int healthAmount) {
 
-        currentHealth =+ healAmount;
+        currentHealth += healthAmount;
 
         if(currentHealth > maxHealth) {
 
             currentHealth = maxHealth;
 
         }
+            healthText.text = currentHealth.ToString() + "%";
+    }
+
+    public void UpdateAmmoUI() {
+
+        ammoText.text = currentAmmo.ToString();
 
     }
+
+    public void UpdateHealthUI(){
+
+            healthText.text = currentHealth.ToString();
+
+        }
 
     public void GunShooting() {
 
         if (gunFirst == true) {
 
             gunSecond = false;
+            gunThird = false;
 
             if(Input.GetMouseButtonDown(0)) {
 
@@ -137,7 +164,7 @@ public class PlayerController : MonoBehaviour
 
                         if(hit.transform.tag == "Enemy") {
 
-                                hit.transform.parent.GetComponent<EnemyController>().TakeDamage();
+                                hit.transform.parent.GetComponent<EnemyController>().TakeDamage(4);
 
                             }
 
@@ -153,7 +180,7 @@ public class PlayerController : MonoBehaviour
         } else if(gunSecond == true) {
 
             gunFirst = false;
-            
+            gunThird = false;
 
             if(Input.GetMouseButtonDown(0)) {
 
@@ -171,9 +198,42 @@ public class PlayerController : MonoBehaviour
 
                         if(hit.transform.tag == "Enemy") {
 
-                                hit.transform.parent.GetComponent<EnemyController>().TakeDamage();
-                                hit.transform.parent.GetComponent<EnemyController>().TakeDamage();
-                                hit.transform.parent.GetComponent<EnemyController>().TakeDamage();
+                                hit.transform.parent.GetComponent<EnemyController>().TakeDamage(12);
+
+                            }
+
+                        } else {
+                            Debug.Log("Patrzę na nic!");
+                        }
+                    }
+                currentAmmo--;
+                gunAnimation.SetTrigger("Shoot");
+
+            }
+
+        }   else if(gunThird == true) {
+
+            gunFirst = false;
+            gunSecond = false;
+            
+
+            if(Input.GetMouseButton(0)) {
+
+                if(currentAmmo > 0) {
+
+                    
+                    Ray ray = viewCam.ViewportPointToRay(new Vector3(.5f, .5f, 0f));
+                    RaycastHit hit;
+
+                    if(Physics.Raycast(ray, out hit))
+
+                        {
+                        //Debug.Log("Patrzę na " + hit.transform.name);
+                        Instantiate(bulletImpact, hit.point, transform.rotation);
+
+                        if(hit.transform.tag == "Enemy") {
+
+                                hit.transform.parent.GetComponent<EnemyController>().TakeDamage(1);
 
                             }
 
@@ -186,7 +246,6 @@ public class PlayerController : MonoBehaviour
 
             }
         }
-
 
     }
 
