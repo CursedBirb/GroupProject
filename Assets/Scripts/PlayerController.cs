@@ -19,7 +19,10 @@ public class PlayerController : MonoBehaviour
     public Camera viewCam;
 
     public GameObject bulletImpact;
-    public int currentAmmo;
+
+    public int pistolAmmo;
+    public int shotgunAmmo;
+    public int machineAmmo;
 
     public Animator gunAnimation;
 
@@ -50,9 +53,14 @@ public class PlayerController : MonoBehaviour
     {
         
         currentHealth = maxHealth;
+
+        pistolAmmo = 30;
+        shotgunAmmo = 15;
+        machineAmmo = 60;
+
         healthText.text = currentHealth.ToString() + "%";
 
-        ammoText.text = currentAmmo.ToString();
+        ammoText.text = pistolAmmo.ToString();
     }
 
     // Update is called once per frame
@@ -104,7 +112,7 @@ public class PlayerController : MonoBehaviour
 
     }
 
-public void TakeDamage(int damageAmount) {
+    public void TakeDamage(int damageAmount) {
 
         currentHealth -= damageAmount;
 
@@ -131,7 +139,7 @@ public void TakeDamage(int damageAmount) {
 
     public void UpdateAmmoUI() {
 
-        ammoText.text = currentAmmo.ToString();
+        ammoText.text = pistolAmmo.ToString();
 
     }
 
@@ -150,7 +158,7 @@ public void TakeDamage(int damageAmount) {
 
             if(Input.GetMouseButtonDown(0)) {
 
-                if(currentAmmo > 0) {
+                if(pistolAmmo > 0) {
 
                     
                     Ray ray = viewCam.ViewportPointToRay(new Vector3(.5f, .5f, 0f));
@@ -171,9 +179,16 @@ public void TakeDamage(int damageAmount) {
                         } else {
                             Debug.Log("Patrzę na nic!");
                         }
+
+                    gunAnimation.SetTrigger("Shoot");    
+                    pistolAmmo--;
+
                     }
-                currentAmmo--;
-                gunAnimation.SetTrigger("Shoot");
+
+                if(pistolAmmo <=0) {
+
+                    pistolAmmo = 0;
+                }
 
                 }
 
@@ -184,7 +199,7 @@ public void TakeDamage(int damageAmount) {
 
             if(Input.GetMouseButtonDown(0)) {
 
-                if(currentAmmo > 0) {
+                if(shotgunAmmo > 0) {
 
                     
                     Ray ray = viewCam.ViewportPointToRay(new Vector3(.5f, .5f, 0f));
@@ -205,9 +220,17 @@ public void TakeDamage(int damageAmount) {
                         } else {
                             Debug.Log("Patrzę na nic!");
                         }
+
+                    gunAnimation.SetTrigger("Shoot");    
+                    shotgunAmmo--;
+
                     }
-                currentAmmo--;
-                gunAnimation.SetTrigger("Shoot");
+
+                
+                if(shotgunAmmo <=0) {
+
+                    shotgunAmmo = 0;
+                }
 
             }
 
@@ -219,7 +242,7 @@ public void TakeDamage(int damageAmount) {
 
             if(Input.GetMouseButton(0)) {
 
-                if(currentAmmo > 0) {
+                if(machineAmmo > 0) {
 
                     
                     Ray ray = viewCam.ViewportPointToRay(new Vector3(.5f, .5f, 0f));
@@ -240,9 +263,16 @@ public void TakeDamage(int damageAmount) {
                         } else {
                             Debug.Log("Patrzę na nic!");
                         }
+
+                    gunAnimation.SetTrigger("Shoot");    
+                    machineAmmo--;
+
                     }
-                currentAmmo--;
-                gunAnimation.SetTrigger("Shoot");
+
+                if(machineAmmo <=0) {
+
+                    machineAmmo = 0;
+                }
 
             }
         }

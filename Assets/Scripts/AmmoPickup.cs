@@ -5,7 +5,10 @@ using UnityEngine;
 public class AmmoPickup : MonoBehaviour
 {
 
-    public int ammoAmount = 25;
+    public int ammoPistolAmount = 30;
+    public int ammoShotgunAmount = 15;
+    public int ammoMachineAmount = 60;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -22,7 +25,26 @@ public class AmmoPickup : MonoBehaviour
 
         if(other.tag == "Player") {
 
-            PlayerController.instance.currentAmmo += ammoAmount;
+            PlayerController.instance.pistolAmmo += ammoPistolAmount;
+            if(PlayerController.instance.pistolAmmo >= 90) {
+
+                PlayerController.instance.pistolAmmo = 90;
+
+            }
+
+            PlayerController.instance.shotgunAmmo += ammoShotgunAmount;
+            if(PlayerController.instance.shotgunAmmo >= 45) {
+
+                PlayerController.instance.shotgunAmmo = 45;
+
+            }
+
+            PlayerController.instance.machineAmmo += ammoMachineAmount;
+            if(PlayerController.instance.machineAmmo >= 180) {
+
+                PlayerController.instance.machineAmmo = 180;
+
+            }
             PlayerController.instance.UpdateAmmoUI();
             Destroy(gameObject);
 

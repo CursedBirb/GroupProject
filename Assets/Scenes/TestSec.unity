@@ -8026,7 +8026,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8b5e16f3bbc643946b4d737b5a638933, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ammoAmount: 25
+  ammoPistolAmount: 30
+  ammoShotgunAmount: 15
+  ammoMachineAmount: 60
 --- !u!1 &361546845
 GameObject:
   m_ObjectHideFlags: 0
@@ -14587,8 +14589,20 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 90441537}
     - target: {fileID: 2654024242697594540, guid: 6ccd616eb889d9c4c80b2f52420e4965, type: 3}
+      propertyPath: pistolAmmo
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 2654024242697594540, guid: 6ccd616eb889d9c4c80b2f52420e4965, type: 3}
       propertyPath: currentAmmo
       value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 2654024242697594540, guid: 6ccd616eb889d9c4c80b2f52420e4965, type: 3}
+      propertyPath: machineAmmo
+      value: 60
+      objectReference: {fileID: 0}
+    - target: {fileID: 2654024242697594540, guid: 6ccd616eb889d9c4c80b2f52420e4965, type: 3}
+      propertyPath: shotgunAmmo
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 2654024242697594540, guid: 6ccd616eb889d9c4c80b2f52420e4965, type: 3}
       propertyPath: bulletImpact
