@@ -115,12 +115,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bcafe610d7d95874890d919686bcaee2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 12
+  health: 5
   explosion: {fileID: 213406792459685259, guid: 918eaaddc09f95e449ce15a0e1cc08ec, type: 3}
   playerRange: 8
   theRB: {fileID: 162094815733970313}
   moveSpeed: 2
-  damageAmount: 0
 --- !u!1 &162094816077242590
 GameObject:
   m_ObjectHideFlags: 0

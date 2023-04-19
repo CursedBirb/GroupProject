@@ -19,7 +19,7 @@ public class LoadSecondScene : MonoBehaviour
 
         if(other.tag == "Player") {
 
-            SceneManager.LoadScene("");   //wrzuć tu nazwę kolejnej sceny, pamiętaj, by aktywować ją wcześniej tak jak przy śmierci
+            SceneManager.LoadScene("SecondMap");   //wrzuć tu nazwę kolejnej sceny, pamiętaj, by aktywować ją wcześniej tak jak przy śmierci
 
         }
     }
