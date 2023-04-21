@@ -135,6 +135,18 @@ MonoBehaviour:
   moveSpeed: 5
   mouseSensitivity: 1
   viewCam: {fileID: 2654024242315731522}
+  bulletImpact: {fileID: 418200666119308967, guid: a33d8c9f31cd07c4293a6fe63f9c8c49, type: 3}
+  pistolAmmo: 0
+  shotgunAmmo: 0
+  machineAmmo: 0
+  gunAnimation: {fileID: 0}
+  currentHealth: 0
+  maxHealth: 100
+  deadScreen: {fileID: 0}
+  hasDied: 0
+  healthText: {fileID: 0}
+  ammoText: {fileID: 0}
+  gunType: 0
 --- !u!50 &2654024242697594541
 Rigidbody2D:
   serializedVersion: 4

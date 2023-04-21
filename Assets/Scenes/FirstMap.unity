@@ -8116,7 +8116,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8b5e16f3bbc643946b4d737b5a638933, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ammoAmount: 25
+  ammoPistolAmount: 30
+  ammoShotgunAmount: 15
+  ammoMachineAmount: 60
 --- !u!1 &361546845
 GameObject:
   m_ObjectHideFlags: 0
@@ -14841,6 +14843,14 @@ PrefabInstance:
       propertyPath: gunAnimation
       value: 
       objectReference: {fileID: 566237191}
+    - target: {fileID: 2654024242697594540, guid: 6ccd616eb889d9c4c80b2f52420e4965, type: 3}
+      propertyPath: gunAnimation2
+      value: 
+      objectReference: {fileID: 2263570675848566931}
+    - target: {fileID: 2654024242697594540, guid: 6ccd616eb889d9c4c80b2f52420e4965, type: 3}
+      propertyPath: gunAnimation3
+      value: 
+      objectReference: {fileID: 2263570675848566930}
     - target: {fileID: 2654024242697594541, guid: 6ccd616eb889d9c4c80b2f52420e4965, type: 3}
       propertyPath: m_Constraints
       value: 4
@@ -57969,6 +57979,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2263570674783927473, guid: a29ba65b52e32494ebb66bd528b3212f, type: 3}
+      propertyPath: m_RootOrder
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 2263570674783927473, guid: a29ba65b52e32494ebb66bd528b3212f, type: 3}
       propertyPath: m_SizeDelta.x
       value: 800
       objectReference: {fileID: 0}
@@ -57992,8 +58006,26 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: -136.23
       objectReference: {fileID: 0}
+    - target: {fileID: 3988536998642223981, guid: a29ba65b52e32494ebb66bd528b3212f, type: 3}
+      propertyPath: m_RootOrder
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4628342759796218489, guid: a29ba65b52e32494ebb66bd528b3212f, type: 3}
+      propertyPath: m_RootOrder
+      value: 4
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a29ba65b52e32494ebb66bd528b3212f, type: 3}
+--- !u!95 &2263570675848566930 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 5669562599307076172, guid: a29ba65b52e32494ebb66bd528b3212f, type: 3}
+  m_PrefabInstance: {fileID: 2263570675848566929}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &2263570675848566931 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 4580360049495755900, guid: a29ba65b52e32494ebb66bd528b3212f, type: 3}
+  m_PrefabInstance: {fileID: 2263570675848566929}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &7360169980063945086
 PrefabInstance:
   m_ObjectHideFlags: 0

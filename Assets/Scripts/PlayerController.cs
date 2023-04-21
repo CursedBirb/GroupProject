@@ -25,6 +25,8 @@ public class PlayerController : MonoBehaviour
     public int machineAmmo;
 
     public Animator gunAnimation;
+    public Animator gunAnimation2;
+    public Animator gunAnimation3;
 
     public int currentHealth;
     public int maxHealth = 100;
@@ -221,7 +223,7 @@ public class PlayerController : MonoBehaviour
                             Debug.Log("Patrzę na nic!");
                         }
 
-                    gunAnimation.SetTrigger("Shoot");    
+                    gunAnimation2.SetTrigger("Shoot");    
                     shotgunAmmo--;
 
                     }
@@ -264,7 +266,7 @@ public class PlayerController : MonoBehaviour
                             Debug.Log("Patrzę na nic!");
                         }
 
-                    gunAnimation.SetTrigger("Shoot");    
+                    gunAnimation3.SetTrigger("Shoot");    
                     machineAmmo--;
 
                     }
