@@ -44,8 +44,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b09fad47bb1156541ac6f687f73f7534, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gunSpriteFirst: {fileID: 2263570675282329746}
-  gunSpriteSecond: {fileID: 3887869156664123281}
+  gunSpriteFirst: {fileID: 3887869156664123281}
+  gunSpriteSecond: {fileID: 2263570675282329746}
   gunSpriteThird: {fileID: 5397251818315021950}
 --- !u!1 &2263570674193272240
 GameObject:
@@ -349,8 +349,8 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 4083909105913970827}
-  - {fileID: 2263570675282329749}
   - {fileID: 4628342759796218489}
+  - {fileID: 2263570675282329749}
   - {fileID: 3988536998642223981}
   - {fileID: 2263570674783927473}
   m_Father: {fileID: 0}
@@ -513,7 +513,7 @@ GameObject:
   - component: {fileID: 2263570675282329748}
   - component: {fileID: 2263570675282329750}
   m_Layer: 5
-  m_Name: HUD_Gun
+  m_Name: HUD_Gun_Second
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -532,7 +532,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2263570674272790425}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -758,7 +758,7 @@ GameObject:
   - component: {fileID: 2559401309725533109}
   - component: {fileID: 4580360049495755900}
   m_Layer: 5
-  m_Name: HUD_Gun_Second
+  m_Name: HUD_Gun_First
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -777,7 +777,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2263570674272790425}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}

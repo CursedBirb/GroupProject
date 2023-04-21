@@ -14842,11 +14842,11 @@ PrefabInstance:
     - target: {fileID: 2654024242697594540, guid: 6ccd616eb889d9c4c80b2f52420e4965, type: 3}
       propertyPath: gunAnimation
       value: 
-      objectReference: {fileID: 566237191}
+      objectReference: {fileID: 2263570675848566931}
     - target: {fileID: 2654024242697594540, guid: 6ccd616eb889d9c4c80b2f52420e4965, type: 3}
       propertyPath: gunAnimation2
       value: 
-      objectReference: {fileID: 2263570675848566931}
+      objectReference: {fileID: 566237191}
     - target: {fileID: 2654024242697594540, guid: 6ccd616eb889d9c4c80b2f52420e4965, type: 3}
       propertyPath: gunAnimation3
       value: 
@@ -57997,6 +57997,10 @@ PrefabInstance:
     - target: {fileID: 2263570674783927473, guid: a29ba65b52e32494ebb66bd528b3212f, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0.0010033
+      objectReference: {fileID: 0}
+    - target: {fileID: 2263570675282329749, guid: a29ba65b52e32494ebb66bd528b3212f, type: 3}
+      propertyPath: m_RootOrder
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2263570675282329749, guid: a29ba65b52e32494ebb66bd528b3212f, type: 3}
       propertyPath: m_AnchoredPosition.x
