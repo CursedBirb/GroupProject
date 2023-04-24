@@ -13,12 +13,11 @@ public class MainMenu : MonoBehaviour
 
     public void LoadGameMenu() {
 
-        SceneManager.LoadScene("LoadGameMenu");
+        SceneManager.LoadScene("LoadMenu");
         
     }
 
-
-    public void MainMenU() {
+    public void BackToMainMenu() {
 
         SceneManager.LoadScene("MainMenu");
 
