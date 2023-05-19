@@ -3,9 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class LoadSecondScene : MonoBehaviour
-{
-
+public class LoadSecondScene : MonoBehaviour {
 
     void Start() {
 
@@ -19,9 +17,26 @@ public class LoadSecondScene : MonoBehaviour
 
         if(other.tag == "Player") {
 
-            SceneManager.LoadScene("SecondMap");   //wrzuć tu nazwę kolejnej sceny, pamiętaj, by aktywować ją wcześniej tak jak przy śmierci
+            PlayerController.instance.finishedLevel = 2;
+
+            //if(Input.GetKeyDown(KeyCode.Space)) {
+            
+                if (SceneManager.GetActiveScene() == SceneManager.GetSceneByName("FirstMap")) {
+
+                    SceneManager.LoadScene("SecondMap");   //wrzuć tu nazwę kolejnej sceny, pamiętaj, by aktywować ją wcześniej tak jak przy śmierci
+
+                }
+
+                else if(SceneManager.GetActiveScene() == SceneManager.GetSceneByName("SecondMap")) {
+
+                    SceneManager.LoadScene("SecondMap");   //wrzuć tu nazwę kolejnej sceny, pamiętaj, by aktywować ją wcześniej tak jak przy śmierci
+
+                }
+
+            //}
 
         }
+
     }
-    
+
 }

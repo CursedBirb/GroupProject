@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
 {
@@ -31,7 +32,11 @@ public class PlayerController : MonoBehaviour
     public int currentHealth;
     public int maxHealth = 100;
     public GameObject deadScreen;
-    public bool hasDied;
+    public GameObject firstLevelEndScreen;
+    public GameObject secondLevelEndScreen;
+    public int hasDied;
+    public int finishedLevel;
+
 
     public Text healthText, ammoText;
 
@@ -40,6 +45,8 @@ public class PlayerController : MonoBehaviour
     private bool gunThird;
     public int gunType;
 
+    public int damagePotionMultiply;
+
     public void Awake() {
 
         instance = this;
@@ -47,6 +54,7 @@ public class PlayerController : MonoBehaviour
         gunSecond = false;
         gunThird = false;
         gunType = 1;
+        
 
     }
     
@@ -63,12 +71,17 @@ public class PlayerController : MonoBehaviour
         healthText.text = currentHealth.ToString() + "%";
 
         ammoText.text = pistolAmmo.ToString();
+
+        damagePotionMultiply = 1;
+
+        hasDied = 1;
+        finishedLevel = 1;
     }
 
     // Update is called once per frame
     void Update() {
 
-        if(!hasDied) {
+        if((hasDied == 1) || (finishedLevel == 1)) {
             //poruszanie
             moveInput = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
 
@@ -112,16 +125,34 @@ public class PlayerController : MonoBehaviour
             GunShooting();
         }
 
+        if(finishedLevel == 2) {
+
+            currentHealth = 9999;
+
+            if(SceneManager.GetActiveScene() == SceneManager.GetSceneByName("FirstMap")) {
+
+                    firstLevelEndScreen.SetActive(true);
+
+                }
+
+                else if(SceneManager.GetActiveScene() == SceneManager.GetSceneByName("SecondMap")) {
+
+                    secondLevelEndScreen.SetActive(true);
+
+                }
+
+        }
+
     }
 
     public void TakeDamage(int damageAmount) {
 
         currentHealth -= damageAmount;
 
-        if( currentHealth <= 0) {
+        if(currentHealth <= 0) {
 
             deadScreen.SetActive(true);
-            hasDied = true;
+            hasDied = 2;
             currentHealth = 0;
         }
             healthText.text = currentHealth.ToString() + "%";
@@ -174,7 +205,7 @@ public class PlayerController : MonoBehaviour
 
                         if(hit.transform.tag == "Enemy") {
 
-                                hit.transform.parent.GetComponent<EnemyController>().TakeDamage(4);
+                                hit.transform.parent.GetComponent<EnemyController>().TakeDamage(4, damagePotionMultiply);
 
                             }
 
@@ -215,7 +246,7 @@ public class PlayerController : MonoBehaviour
 
                         if(hit.transform.tag == "Enemy") {
 
-                                hit.transform.parent.GetComponent<EnemyController>().TakeDamage(12);
+                                hit.transform.parent.GetComponent<EnemyController>().TakeDamage(12, damagePotionMultiply);
 
                             }
 
@@ -258,7 +289,7 @@ public class PlayerController : MonoBehaviour
 
                         if(hit.transform.tag == "Enemy") {
 
-                                hit.transform.parent.GetComponent<EnemyController>().TakeDamage(1);
+                                hit.transform.parent.GetComponent<EnemyController>().TakeDamage(1, damagePotionMultiply);
 
                             }
 

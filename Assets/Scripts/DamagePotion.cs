@@ -1,9 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
-public class ReloadScene : MonoBehaviour
+public class DamagePotion : MonoBehaviour
 {
     // Start is called before the first frame update
     void Start()
@@ -17,15 +16,14 @@ public class ReloadScene : MonoBehaviour
         
     }
 
-    public void RestartScene() {
+    private void OnTriggerEnter2D(Collider2D other){
 
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        if(other.tag == "Player") {
 
-    }
+            PlayerController.instance.damagePotionMultiply = 2;
+            Destroy(gameObject);
 
-    public void BackToMainMenu() {
-
-        SceneManager.LoadScene("MainMenu");
+        }
 
     }
 }

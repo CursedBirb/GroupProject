@@ -120,6 +120,7 @@ MonoBehaviour:
   playerRange: 8
   theRB: {fileID: 162094815733970313}
   moveSpeed: 2
+  damageAmount: 40
 --- !u!1 &162094816077242590
 GameObject:
   m_ObjectHideFlags: 0

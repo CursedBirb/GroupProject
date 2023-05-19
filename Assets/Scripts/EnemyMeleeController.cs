@@ -38,9 +38,9 @@ public class EnemyMeleeController : MonoBehaviour
         
     }
 
-    public void TakeDamage(int damageTaken) {
+    public void TakeDamage(int damageTaken, int damagePotionMultiply) {
 
-        health = health - damageTaken;
+        health = health - (damageTaken * damagePotionMultiply);
         if(health <= 0) {
             
             Destroy(gameObject);
