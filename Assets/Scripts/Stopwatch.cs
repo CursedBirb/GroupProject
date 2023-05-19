@@ -1,35 +1,35 @@
-using System.Collections;
-using System.Collections.Generic;
+using System;
 using UnityEngine;
 using UnityEngine.UI;
-using System;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class Stopwatch : MonoBehaviour {
 
     float timeNow;
-    float timetimetime;
+    bool isRunning = true;
     public TMP_Text deathTime;
     public TMP_Text firstLevelTime;
     public TMP_Text secondLevelTime;
-    public bool timeToStop;
 
-
-    // Start is called before the first frame update
     void Start() {
-
+ 
         timeNow = 0;
-        
+
     }
 
-    // Update is called once per frame
     void Update() {
 
+        if (isRunning) {
 
-        if((PlayerController.instance.hasDied == 1) || (PlayerController.instance.finishedLevel == 1)) {
+            timeNow += Time.deltaTime;
 
-            timeNow =+ Time.deltaTime;
+            if (PlayerController.instance.hasDied || PlayerController.instance.finishedLevel) {
 
+                isRunning = false;
+
+            }
+            
         }
 
         TimeSpan time = TimeSpan.FromSeconds(timeNow);

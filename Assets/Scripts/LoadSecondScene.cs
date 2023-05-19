@@ -5,35 +5,42 @@ using UnityEngine.SceneManagement;
 
 public class LoadSecondScene : MonoBehaviour {
 
+    private bool isTriggered = false;
+
     void Start() {
 
     }
         
     void Update() {
         
+        if(isTriggered && Input.GetKeyDown(KeyCode.Space)) {
+
+            string currentSceneName = SceneManager.GetActiveScene().name;
+            string nextSceneName = "";
+
+            if (currentSceneName == "FirstMap") {
+
+                nextSceneName = "SecondMap";
+            }
+
+            else if (currentSceneName == "SecondMap") {
+
+                nextSceneName = "ThirdMap";
+
+            }
+
+            SceneManager.LoadScene(nextSceneName);
+            
+        }
+
     }
 
     private void OnTriggerEnter2D(Collider2D other) {
 
         if(other.tag == "Player") {
 
-            PlayerController.instance.finishedLevel = 2;
-
-            //if(Input.GetKeyDown(KeyCode.Space)) {
-            
-                if (SceneManager.GetActiveScene() == SceneManager.GetSceneByName("FirstMap")) {
-
-                    SceneManager.LoadScene("SecondMap");   //wrzuć tu nazwę kolejnej sceny, pamiętaj, by aktywować ją wcześniej tak jak przy śmierci
-
-                }
-
-                else if(SceneManager.GetActiveScene() == SceneManager.GetSceneByName("SecondMap")) {
-
-                    SceneManager.LoadScene("SecondMap");   //wrzuć tu nazwę kolejnej sceny, pamiętaj, by aktywować ją wcześniej tak jak przy śmierci
-
-                }
-
-            //}
+            isTriggered = true;
+            PlayerController.instance.finishedLevel = true;
 
         }
 

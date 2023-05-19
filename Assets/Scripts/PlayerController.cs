@@ -34,8 +34,8 @@ public class PlayerController : MonoBehaviour
     public GameObject deadScreen;
     public GameObject firstLevelEndScreen;
     public GameObject secondLevelEndScreen;
-    public int hasDied;
-    public int finishedLevel;
+    public bool hasDied;
+    public bool finishedLevel;
 
 
     public Text healthText, ammoText;
@@ -74,14 +74,14 @@ public class PlayerController : MonoBehaviour
 
         damagePotionMultiply = 1;
 
-        hasDied = 1;
-        finishedLevel = 1;
+        hasDied = false;
+        finishedLevel = false;
     }
 
     // Update is called once per frame
     void Update() {
 
-        if((hasDied == 1) || (finishedLevel == 1)) {
+        if((!hasDied) || (!finishedLevel)) {
             //poruszanie
             moveInput = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
 
@@ -125,7 +125,7 @@ public class PlayerController : MonoBehaviour
             GunShooting();
         }
 
-        if(finishedLevel == 2) {
+        if(finishedLevel) {
 
             currentHealth = 9999;
 
@@ -152,7 +152,7 @@ public class PlayerController : MonoBehaviour
         if(currentHealth <= 0) {
 
             deadScreen.SetActive(true);
-            hasDied = 2;
+            hasDied = true;
             currentHealth = 0;
         }
             healthText.text = currentHealth.ToString() + "%";
