@@ -9,6 +9,8 @@ public class AmmoPickup : MonoBehaviour
     public int ammoShotgunAmount = 15;
     public int ammoMachineAmount = 60;
 
+    //Empty Test
+
     // Start is called before the first frame update
     void Start()
     {
@@ -18,6 +20,7 @@ public class AmmoPickup : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+    
         
     }
 
